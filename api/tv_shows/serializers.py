@@ -8,3 +8,6 @@ class ShowSerializer(serializers.HyperlinkedModelSerializer):
         
 class RequestSerializer(serializers.Serializer):
     category = serializers.CharField(max_length=100)
+    
+class VideoResponseSerializer(serializers.Serializer):
+    link = serializers.CharField(max_length=255)
