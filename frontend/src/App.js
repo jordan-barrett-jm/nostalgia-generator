@@ -38,6 +38,12 @@ class App extends React.Component {
         )
     }
 
+    getEmbedURL(url){
+        const video_id = url.split('v=')[1];
+        const embed_url = `https://www.youtube.com/embed/${video_id}`;
+        return embed_url;
+    }
+
     render(){
         return (
             <Container style={{ margin: 20 }} textAlign='center'>
@@ -46,7 +52,9 @@ class App extends React.Component {
                     <Form.Button>Generate Nostalgia</Form.Button>
                 </Form>
                 {this.state.link ?
-                    <a href={this.state.link}>Video Link</a>
+                    <Container style={{ margin: 20 }}>
+                        <iframe width="560" height="315" src={this.getEmbedURL(this.state.link)} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </Container>
                 : ""
                 }
             </Container>
