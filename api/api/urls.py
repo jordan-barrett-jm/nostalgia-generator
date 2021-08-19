@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from graphene_django.views import GraphQLView
+from schema import schema
 
 urlpatterns = [
     path('', include('tv_shows.urls')),
-    path("graphql", csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    path("graphql", GraphQLView.as_view(graphiql=True, schema=schema)),
     path('admin/', admin.site.urls),
 ]
