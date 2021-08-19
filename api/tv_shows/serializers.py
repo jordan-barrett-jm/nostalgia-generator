@@ -1,3 +1,4 @@
+"Django Rest Framework serializer definitions"
 from tv_shows.models import Show
 from rest_framework import serializers
 

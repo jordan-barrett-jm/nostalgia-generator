@@ -7,7 +7,7 @@ class App extends React.Component {
     constructor (props){
         super(props)
         this.state = {
-            category: '',
+            category: '1990s',
             link: ''
         }
 
@@ -15,10 +15,11 @@ class App extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     
-    handleChange(event){
+    handleChange(event, result){
+        console.log(result.value)
         this.setState(
             {
-                category: event.target.value
+                category: result.value
             }
         );
     }
@@ -45,11 +46,29 @@ class App extends React.Component {
     }
 
     render(){
+        const options = [
+            {
+                key: '2000s',
+                text: "00's kid",
+                value: "2000s"
+            },
+            {
+                key: '1990s',
+                text: "90's kid",
+                value: "1990s"
+            },
+            {
+                key: '1980s',
+                text: "80's kid",
+                value: "1980s"
+            }
+        ]
         return (
             <Container style={{ margin: 20 }} textAlign='center'>
+                <Header size="huge">I'm a...</Header>
                 <Form onSubmit={this.handleSubmit}> 
-                    <Form.Input onChange={this.handleChange} value={this.state.category}/>
-                    <Form.Button>Generate Nostalgia</Form.Button>
+                    <Form.Dropdown style={{fontSize: '20px'}} onChange={this.handleChange} options={options} defaultValue="1990s"/>
+                    <Form.Button size="huge" color="blue">Generate Nostalgia</Form.Button>
                 </Form>
                 {this.state.link ?
                     <Container style={{ margin: 20 }}>

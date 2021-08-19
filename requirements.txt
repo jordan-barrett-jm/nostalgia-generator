@@ -2,3 +2,5 @@ django
 django-rest-framework
 youtube-search-python
 django-cors-headers
+django-filter
+graphene-django

@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tv_shows',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'graphene_django'
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000'
 ]
+
+GRAPHENE = {
+    "SCHEMA": "api.schema.schema"
+}
