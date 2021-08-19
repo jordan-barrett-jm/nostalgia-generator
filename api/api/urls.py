@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import include, path
 from graphene_django.views import GraphQLView
 from schema import schema
+from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
     path('', include('tv_shows.urls')),
-    path("graphql", GraphQLView.as_view(graphiql=True, schema=schema)),
+    path("graphql", csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
     path('admin/', admin.site.urls),
 ]
