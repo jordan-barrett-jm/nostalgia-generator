@@ -7,7 +7,7 @@ Seemed like it would scratch an underserved itch.
 # Technologies
 Frontend: React, Semantic UI React
 
-Backend: Django, Django REST Framework, YouTube Search Python
+Backend: Django, Django REST Framework, Graphene (GraphQL), YouTube Search Python
 
 # Demo
 
