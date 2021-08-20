@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import 'semantic-ui-css/semantic.min.css';
-import { Message, Grid, Table, Form, Dimmer, Loader, Container, Header } from 'semantic-ui-react';
+import {  Form, Container, Header } from 'semantic-ui-react';
 
 class App extends React.Component {
     constructor (props){
@@ -25,16 +25,21 @@ class App extends React.Component {
     }
 
     async handleSubmit(event){
-        const API_ENDPOINT = "http://127.0.0.1:8000/link/";
+        const API_ENDPOINT = "http://127.0.0.1:8000/graphql";
         event.preventDefault();
         console.log(this.state.category);
-        axios.post(API_ENDPOINT, {"category": this.state.category}).then(
+        //GraphQL Request
+        const req_data = `{
+            randomShowByCategory(category:"${this.state.category}") {
+              videoLink
+            }
+        }`
+        console.log(req_data)
+        axios.post(API_ENDPOINT, {query: req_data}).then(
             res => {
-                //console.log(res.data);
                 this.setState({
-                    'link': res.data.link
+                    'link': res.data.data.randomShowByCategory.videoLink
                 });
-                console.log(res.data.link);
             }
         )
     }
