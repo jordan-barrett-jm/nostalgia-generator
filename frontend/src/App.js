@@ -25,7 +25,7 @@ class App extends React.Component {
     }
 
     async handleSubmit(event){
-        const API_ENDPOINT = "http://127.0.0.1:8000/graphql";
+        const API_ENDPOINT = "/graphql";
         event.preventDefault();
         console.log(this.state.category);
         //GraphQL Request
